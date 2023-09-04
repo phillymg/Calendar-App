@@ -32,10 +32,8 @@ $(document).ready(function () {
   //
 
   var currentTime = dayjs().format('H');
-  console.log(currentTime);
   $(".time-block").each(function () {
     var timeBlockHour = parseInt($(this).attr("id").split("-")[1]);
-    console.log(timeBlockHour);
     if (timeBlockHour < currentTime) {
       $(this).addClass("past");
     } else if (timeBlockHour == currentTime) {
@@ -43,7 +41,6 @@ $(document).ready(function () {
     } else {
       $(this).addClass("future");
     }
-
   });
 
   // TODO: Add code to get any user input that was saved in localStorage and set
