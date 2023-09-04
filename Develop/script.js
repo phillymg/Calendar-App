@@ -31,7 +31,20 @@ $(document).ready(function () {
   // current hour in 24-hour time?
   //
 
+  var currentTime = dayjs().format('H');
+  console.log(currentTime);
+  $(".time-block").each(function () {
+    var timeBlockHour = parseInt($(this).attr("id").split("-")[1]);
+    console.log(timeBlockHour);
+    if (timeBlockHour < currentTime) {
+      $(this).addClass("past");
+    } else if (timeBlockHour == currentTime) {
+      $(this).addClass("present");
+    } else {
+      $(this).addClass("future");
+    }
 
+  });
 
   // TODO: Add code to get any user input that was saved in localStorage and set
   // the values of the corresponding textarea elements. HINT: How can the id
