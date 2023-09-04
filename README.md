@@ -23,6 +23,8 @@ There are none.
 
 Enter text into the time blocks, and click the corresponding save button.
 
+![Calendar App Screenshot](https://github.com/phillymg/Calendar-App/assets/131498400/32a495ad-ed11-459e-b4ff-4b24d723a1e0)
+
 ## License
 This project uses the MIT license.
 
