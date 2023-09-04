@@ -9,17 +9,13 @@ $(document).ready(function () {
   // time-block containing the button that was clicked? How might the id be
   // useful when saving the description in local storage?
   //
-  $(document).ready(function () {
-    $(".saveBtn").click(function (event) {
-      var timeBlock = $(this).closest(".time-block");
-      var timeBlockId = timeBlock.attr("id");
 
-      console.log("Clicked button in time-block with id:", timeBlockId);
+  $(".saveBtn").click(function (event) {
+    var timeBlock = $(this).closest(".time-block");
+    var timeBlockId = timeBlock.attr("id");
+    var description = timeBlock.find(".description").val();
 
-      var description = timeBlock.find(".description").val();
-
-      localStorage.setItem(timeBlockId, description);
-    });
+    localStorage.setItem(timeBlockId, description);
   });
 
 
@@ -31,8 +27,9 @@ $(document).ready(function () {
   // current hour in 24-hour time?
   //
 
-  var currentTime = dayjs().format('H');
+
   $(".time-block").each(function () {
+    var currentTime = dayjs().format('H');
     var timeBlockHour = parseInt($(this).attr("id").split("-")[1]);
     if (timeBlockHour < currentTime) {
       $(this).addClass("past");
@@ -48,6 +45,20 @@ $(document).ready(function () {
   // attribute of each time-block be used to do this?
   //
 
+  $(".time-block").each(function () {
+    var storageKeyID = $(this).attr("id");
+    var storageText = localStorage.getItem(storageKeyID);
+    var textAreaEl = $(this).find("textarea");
+    if (storageText !== null) {
+      textAreaEl.val(storageText);
+    } else {
+      console.log("Nothing found.")
+    }
+  });
+
 
   // TODO: Add code to display the current date in the header of the page.
+  var currentDay = dayjs().format('MM/DD/YYYY');
+  $("#currentDay").text(currentDay);
 });
+
